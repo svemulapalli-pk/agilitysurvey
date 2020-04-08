@@ -6,6 +6,8 @@ import {AssessmentPage} from "./pages/AssessmentPage";
 import ThemeContext from "./ThemeContext";
 import { Header } from "./components/Header";
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 const App = () => {
   const theme = useState("darkblue");
   return (

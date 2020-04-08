@@ -1,4 +1,5 @@
 import React from "react";
+import SurveyTabs from "../components/SurveyTabs";
 
 export const AssessmentPage = () => {
   return (
@@ -7,10 +8,9 @@ export const AssessmentPage = () => {
         <h3>Welcome to the SAFe DevOps Assessment</h3>
       </div>
       <div className="page-content">
-        <form name="assessment-form">
-          <div className="assess-form__steps"></div>
-          <div className="assess-form__form-content"></div>
-        </form>
+        <div name="assessment-form-wrapper">
+          <SurveyTabs />
+        </div>
       </div>
     </div>
   );

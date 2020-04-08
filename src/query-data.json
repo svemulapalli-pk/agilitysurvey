@@ -1,48 +1,56 @@
 {
-    "questions": [{
-        "query": "Collaborate and Research involves Product Managers working directly with end-users, stakeholders and subject matter experts to understand customers' needs and identify specific business outcomes and associated metrics to guide solution delivery. Please rate your team's ability to collaborate with customer-side and IT-side experts to define Minimum Marketable Features (MMF) in support of the hypothesis.",
-        "options": {
-            "a": "Product Management roles and responsibilities are not defined or followed.",
-            "b": "Product Management creates requirements in large batches with little customer or development collaboration.",
-            "c": "Product Management collaborates with business-side or development-side experts, but not both, when defining requirements.",
-            "d": "Product Management regularly collaborates with business-side, development-side, and operation-side experts but does not define Minimum Marketable Features.",
-            "e": "Product Management always collaborates with business-side, development-side, and operation-side experts and defines Minimum Marketable Features."
+    "questions": [
+        {
+            "set" : [ {
+                "query": "Collaborate and Research involves Product Managers working directly with end-users, stakeholders and subject matter experts to understand customers' needs and identify specific business outcomes and associated metrics to guide solution delivery. Please rate your team's ability to collaborate with customer-side and IT-side experts to define Minimum Marketable Features (MMF) in support of the hypothesis.",
+                "options": {
+                    "a": "Product Management roles and responsibilities are not defined or followed.",
+                    "b": "Product Management creates requirements in large batches with little customer or development collaboration.",
+                    "c": "Product Management collaborates with business-side or development-side experts, but not both, when defining requirements.",
+                    "d": "Product Management regularly collaborates with business-side, development-side, and operation-side experts but does not define Minimum Marketable Features.",
+                    "e": "Product Management always collaborates with business-side, development-side, and operation-side experts and defines Minimum Marketable Features."
+                }
+            }, {
+                "query": "Architecting for continuous delivery involves applying 'just enough' intentional architecture to assure policy compliance without sacrificing product development flow, to ensure solutions are loosely coupled and to continuously pay down technical debt. Please rate your team's effectiveness at architecting for continuous delivery.",
+                "options": {
+                    "a": "Architecture is monolithic and fragile; it is difficult to change and involves managing complex dependencies across many components and systems.",
+                    "b": "Architecture is predominantly monolithic but some applications/systems are loosely coupled.",
+                    "c": "Architectures is most decoupled but doesn't allow Release on Demand.",
+                    "d": "Architecture is aligned around value delivery and with few dependencies across components and systems.",
+                    "e": "Architecture is built for Release on Demand and operability."
+                }
+            }, {
+                "query": "Synthesizing involves combining the outputs of Hypothesize, Collaborate & Research and Architect to produce well-formed, prioritized features. These features then become the primary vehicle of value delivery through the remainder of the Continuous Delivery Pipeline. Please rate your team's ability to synthesize the results of Continuous Exploration activities into a well-crafted, prioritized, actionable feature backlog.",
+                "options": {
+                    "a": "The program backlog does not exist or is not shared.",
+                    "b": "The program backlog exists but the features are incomplete and prioritization is an afterthought.",
+                    "c": "The program backlog contains fully defined features but are not prioritized using WSJF.",
+                    "d": "Features in the program backlog are complete, prioritized using WSJF and calibrated to the delivery capacity of the ART.",
+                    "e": "The program backlog is a collection of Minimum Marketable Features created using BDD and prioritized using WSJF."
+                }
+            }, {
+                "query": "Hypothesizing entails expressing a business idea (epic) in terms of the business value it is expected to deliver. This hypothesis is then implemented as a Minimum Viable Product (MVP) through the Continuous Delivery Pipeline and evaluated for accuracy when released. Please rate your team's ability to translate business ideas into clear and measurable epic hypothesis statements. ",
+                "options": {
+                    "a": "Ideas are vague or not defined.",
+                    "b": "Ideas are defined (e.g., as epics) but do not include hypothesis statements.",
+                    "c": "Some ideas are expressed as hypothesis statements with measurable outcomes.",
+                    "d": "Most ideas are expressed as hypothesis statements with measurable outcomes and include an MVPs.",
+                    "e": "All ideas are expressed as hypothesis statements with measurable outcomes and include an MVPs."
+                }
+            }, {
+                "query": "Developing in the Continuous Delivery Pipeline involves splitting features into stories, implementing stories in vertical slices using Test-Driven Development (TDD), and committing changes to version control as they are made. Please rate your team's ability to quickly and reliably define and implement stories.",
+                "options": {
+                    "a": "The team backlog does not exist or is not used to manage daily work.",
+                    "b": "Stories are either incomplete or too verbose; unit tests are generally not written; peer reviews are not conducted.",
+                    "c": "Stories are complete; most changes have unit tests; peer reviews are usually conducted.",
+                    "d": "Code is checked in daily; unit test coverage is 80%+; peer reviews are always",
+                    "e": "Code is checked in multiple times per day; tests are written before code (TDD); pair work and other Built-in quality practices are the norm."
+                }
+            }]
+        }, {
+            "set": []
+        }, {
+            "set": []
         }
-    }, {
-        "query": "Architecting for continuous delivery involves applying 'just enough' intentional architecture to assure policy compliance without sacrificing product development flow, to ensure solutions are loosely coupled and to continuously pay down technical debt. Please rate your team's effectiveness at architecting for continuous delivery.",
-        "options": {
-            "a": "Architecture is monolithic and fragile; it is difficult to change and involves managing complex dependencies across many components and systems.",
-            "b": "Architecture is predominantly monolithic but some applications/systems are loosely coupled.",
-            "c": "Architectures is most decoupled but doesn't allow Release on Demand.",
-            "d": "Architecture is aligned around value delivery and with few dependencies across components and systems.",
-            "e": "Architecture is built for Release on Demand and operability."
-        }
-    }, {
-        "query": "Synthesizing involves combining the outputs of Hypothesize, Collaborate & Research and Architect to produce well-formed, prioritized features. These features then become the primary vehicle of value delivery through the remainder of the Continuous Delivery Pipeline. Please rate your team's ability to synthesize the results of Continuous Exploration activities into a well-crafted, prioritized, actionable feature backlog.",
-        "options": {
-            "a": "The program backlog does not exist or is not shared.",
-            "b": "The program backlog exists but the features are incomplete and prioritization is an afterthought.",
-            "c": "The program backlog contains fully defined features but are not prioritized using WSJF.",
-            "d": "Features in the program backlog are complete, prioritized using WSJF and calibrated to the delivery capacity of the ART.",
-            "e": "The program backlog is a collection of Minimum Marketable Features created using BDD and prioritized using WSJF."
-        }
-    }, {
-        "query": "Hypothesizing entails expressing a business idea (epic) in terms of the business value it is expected to deliver. This hypothesis is then implemented as a Minimum Viable Product (MVP) through the Continuous Delivery Pipeline and evaluated for accuracy when released. Please rate your team's ability to translate business ideas into clear and measurable epic hypothesis statements. ",
-        "options": {
-            "a": "Ideas are vague or not defined.",
-            "b": "Ideas are defined (e.g., as epics) but do not include hypothesis statements.",
-            "c": "Some ideas are expressed as hypothesis statements with measurable outcomes.",
-            "d": "Most ideas are expressed as hypothesis statements with measurable outcomes and include an MVPs.",
-            "e": "All ideas are expressed as hypothesis statements with measurable outcomes and include an MVPs."
-        }
-    }, {
-        "query": "Developing in the Continuous Delivery Pipeline involves splitting features into stories, implementing stories in vertical slices using Test-Driven Development (TDD), and committing changes to version control as they are made. Please rate your team's ability to quickly and reliably define and implement stories.",
-        "options": {
-            "a": "The team backlog does not exist or is not used to manage daily work.",
-            "b": "Stories are either incomplete or too verbose; unit tests are generally not written; peer reviews are not conducted.",
-            "c": "Stories are complete; most changes have unit tests; peer reviews are usually conducted.",
-            "d": "Code is checked in daily; unit test coverage is 80%+; peer reviews are always",
-            "e": "Code is checked in multiple times per day; tests are written before code (TDD); pair work and other Built-in quality practices are the norm."
-        }
-    }]
+    ]
 }
