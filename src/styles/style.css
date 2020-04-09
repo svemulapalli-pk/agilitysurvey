@@ -15,6 +15,11 @@
   padding: 20px;
 }
 
+.homepage {
+  background-color: #accc4a;
+  min-height: 100vh;
+}
+
 .survey-page__header {
   height: 100px;
   padding: 10px 40px;

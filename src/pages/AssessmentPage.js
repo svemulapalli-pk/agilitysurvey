@@ -1,5 +1,5 @@
 import React from "react";
-import SurveyTabs from "../components/SurveyTabs";
+import AssessmentTabs from "../components/AssessmentTabs";
 
 export const AssessmentPage = () => {
   return (
@@ -9,7 +9,7 @@ export const AssessmentPage = () => {
       </div>
       <div className="page-content">
         <div name="assessment-form-wrapper">
-          <SurveyTabs />
+          <AssessmentTabs />
         </div>
       </div>
     </div>

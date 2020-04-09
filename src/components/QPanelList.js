@@ -16,7 +16,7 @@ export default class QPanelList extends React.Component {
                 </section>
                 <Form className="assessment-form">
                     {this.props.questionSet.set.map((query, index) => 
-                        <QuestionPanel query={query} key={"query-" + index}/> 
+                        <QuestionPanel set={this.props.questionSet.setName+"-"+index} query={query} key={"query-" + index}/> 
                     )}
                     <Button variant="success" type="submit">Submit</Button>
                 </Form>

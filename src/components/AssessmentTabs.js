@@ -1,13 +1,27 @@
 import React from "react";
 import { Row, Col, Nav, Tab } from 'react-bootstrap';
-import RegisterForm from "../components/RegisterForm";
+import { connect } from 'react-redux';
 
 import data from '../query-data.json';
+import RegisterForm from "./RegisterForm";
 import QPanelList from "./QPanelList";
+import {initializeAssessmentForm} from '../redux/actions/assessmentStepsActions';
 
-export default class SurveyTabs extends React.Component {
+class AssessmentTabs extends React.Component {
     constructor(props) {
         super(props);
+    }
+
+    componentDidMount() {
+        let assessmentSteps = data.questions.map((set, index) => {
+            return {
+                name: set.setName,
+                step: (index + 1),
+                enable: false,
+                active: false
+            }
+        })
+        this.props.dispatch(initializeAssessmentForm(assessmentSteps));
     }
 
     render() {
@@ -17,13 +31,11 @@ export default class SurveyTabs extends React.Component {
                     <Col xs={5} lg={3}>
                         <Nav variant="pills" className="flex-column">
                             <Nav.Item>
-                                <Nav.Link eventKey="Register">Your Profile</Nav.Link>
+                                <Nav.Link eventKey="Register">Register</Nav.Link>
                             </Nav.Item>
-                            {data.questions.map((set, index) =>  
+                            {this.props.steps.map((set, index) =>  
                                 <Nav.Item key={"tab-" + index}>
-                                    <Nav.Link eventKey={"set-" + index}>
-                                        {Object.keys(set)}
-                                    </Nav.Link>
+                                    <Nav.Link eventKey={"set-" + index} disabled={set.enable ? "true" : "false"}>{set.name}</Nav.Link>
                                 </Nav.Item>
                             )}
                         </Nav>
@@ -45,3 +57,11 @@ export default class SurveyTabs extends React.Component {
         );
     }
 };
+
+function mapStateToProps(state) {
+	return {
+        steps: state.assessmentStepsReducer.steps
+	}
+}
+
+export default connect(mapStateToProps)(AssessmentTabs);
