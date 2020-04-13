@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import { Router, Link } from "@reach/router";
-import Home from "./Home";
+import HomePage from "./pages/HomePage";
+import {AssessmentPage} from "./pages/AssessmentPage";
 import ThemeContext from "./ThemeContext";
-import Details from "./Details";
+import { Header } from "./components/Header";
 
 const App = () => {
   const theme = useState("darkblue");
@@ -11,11 +12,11 @@ const App = () => {
     <ThemeContext.Provider value={theme}>
       <div>
         <header>
-          <Link to="/">Home</Link>
+          <Header />
         </header>
         <Router>
-          <Home path="/" />
-          <Details path="/details/:id" />
+          <HomePage path="/" />
+          <AssessmentPage path="/assessment/start" />
         </Router>
       </div>
     </ThemeContext.Provider>
