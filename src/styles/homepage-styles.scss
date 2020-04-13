@@ -1,0 +1,58 @@
+.homepage {
+    background-color: #accc4a;
+    min-height: 100vh;
+}  
+
+.survey-page {
+    &__header {
+        height: 100px;
+        padding: 10px 40px;
+        background-color: #4188a2;
+    }
+  
+    &__logo {
+        height: 80px;
+        width: 300px;
+        display: inline-block;
+    
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+  
+    &__hero-image {
+        height: 400px;
+        background-color: #91b9c3;
+        background-color: #accc4a;
+    
+        &-text {
+            width: 60%;
+            color: #fff;
+            padding: 40px;
+  
+            h2 {
+                font-size: 3rem;
+            }
+    
+            p {
+                margin-top: 40px;
+                font-size: 1.2rem;
+            }
+  
+            a {
+                padding: 15px;
+                font-size: 1.2rem;
+                font-weight: bold;
+                letter-spacing: 1px;
+                background-color: #91b9c3;
+                color: #fff;
+                text-transform: capitalize;
+                margin: 20px 0;
+                text-decoration: none;
+                display: inline-block;
+                text-align: center;
+            }
+        }
+    }
+}
