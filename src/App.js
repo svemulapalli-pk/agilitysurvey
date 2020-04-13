@@ -9,6 +9,7 @@ import HomePage from "./pages/HomePage";
 import {AssessmentPage} from "./pages/AssessmentPage";
 import { Header } from "./components/Header";
 
+import './styles/styles.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const store = configureStore();

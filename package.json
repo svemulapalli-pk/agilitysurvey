@@ -8,6 +8,7 @@
     "bootstrap": "^4.4.1",
     "connected-react-router": "^6.8.0",
     "history": "^4.10.1",
+    "node-sass": "^4.13.1",
     "react": "^16.8.4",
     "react-bootstrap": "^1.0.0",
     "react-dom": "^16.8.4",
