@@ -1,7 +1,7 @@
 import React from "react";
 import AssessmentTabs from "../components/AssessmentTabs";
 
-export const AssessmentPage = () => {
+const AssessmentPage = () => {
   return (
     <div className="assessment-page">
       <div className="page-heading">
@@ -15,3 +15,5 @@ export const AssessmentPage = () => {
     </div>
   );
 };
+
+export default AssessmentPage;

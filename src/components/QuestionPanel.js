@@ -22,6 +22,7 @@ const QuestionPanel = (props) => {
                             custom 
                             name={"radio-group-"+props.set} 
                             id={props.set + '-' + index}
+                            required
                         />
                     </li>
                 )}

@@ -10,6 +10,9 @@ import { initializeAssessmentForm, updateCurrentStep } from '../redux/actions/as
 class AssessmentTabs extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            initializeFormSteps: []
+        }
     }
 
     componentDidMount() {
@@ -22,13 +25,13 @@ class AssessmentTabs extends React.Component {
                 step: (index + 1)
             })
         })
-        
+        this.setState({ initializeFormSteps: assessmentSteps })
         this.props.dispatch(initializeAssessmentForm(assessmentSteps));
     }
 
     render() {
         let selectedStep = this.props.currentStep;
-
+     
         return (
             <Tab.Container id="left-tabs-example" activeKey={selectedStep}>
                 <Row xs={12} className="questions-panel">
@@ -37,8 +40,8 @@ class AssessmentTabs extends React.Component {
                             {this.props.steps.map((set, index) =>  
                                 <Nav.Item key={"tab-" + index}>
                                     {set.enable 
-                                        ? <Nav.Link eventKey={set.name} onClick={() => {this.props.dispatch(updateCurrentStep(set.name))}}>{set.name}</Nav.Link>
-                                        : <Nav.Link eventKey={set.name} disabled>{set.name}</Nav.Link>
+                                        ? <Nav.Link eventKey={set.step} onClick={() => {this.props.dispatch(updateCurrentStep(set.step))}}>{set.name}</Nav.Link>
+                                        : <Nav.Link eventKey={set.step} disabled>{set.name}</Nav.Link>
                                     }
                                 </Nav.Item>
                             )}
@@ -46,11 +49,11 @@ class AssessmentTabs extends React.Component {
                     </Col>
                     <Col xs={7} lg={9} className="questions-panel--tabs-content">
                         <Tab.Content>
-                            <Tab.Pane eventKey="Register">
+                            <Tab.Pane eventKey={0}>
                                 <RegisterForm />
                             </Tab.Pane>
                             {data.questions.map((set, index) =>  
-                                <Tab.Pane key={"tab-content-" + index} eventKey={set.setName} >
+                                <Tab.Pane key={"tab-content-" + index} eventKey={(index + 1)} >
                                     <QPanelList questionSet={set} />
                                 </Tab.Pane>
                             )}

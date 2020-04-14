@@ -4,9 +4,10 @@ import { Provider } from "react-redux";
 import configureStore from './redux/store';
 import { ConnectedRouter } from 'connected-react-router'
 
-import { Router, Link } from "@reach/router";
+import { Router } from "@reach/router";
 import HomePage from "./pages/HomePage";
-import {AssessmentPage} from "./pages/AssessmentPage";
+import AssessmentPage from "./pages/AssessmentPage";
+import ResultsPage from './pages/ResultsPage';
 import { Header } from "./components/Header";
 
 import './styles/styles.scss';
@@ -26,6 +27,7 @@ const App = () => {
           <Router>
             <HomePage path="/" />
             <AssessmentPage path="/assessment" exact />
+            <ResultsPage path="/results" exact />
           </Router>
         </div>
       </ConnectedRouter>

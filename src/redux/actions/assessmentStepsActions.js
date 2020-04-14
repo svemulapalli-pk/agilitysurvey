@@ -18,18 +18,20 @@ export function updateCurrentStep(step) {
 
 export function updateFormStep(steps, nextStep) {
     let activeSteps = [...steps];
-    activeSteps[nextStep.step] = {
-        name: nextStep.name,
-        step: nextStep.step,
-        enable: true,
-        active: true
-    }
 
-    return function (dispatch) {
-        dispatch ({
-            type: "UPDATE_PROGRESS",
-            steps: activeSteps,
-            currentStep: nextStep.name
-        })
+    if(nextStep) {
+        activeSteps[nextStep.step] = {
+            name: nextStep.name,
+            step: nextStep.step,
+            enable: true,
+            active: true
+        }
+    
+        return function (dispatch) {
+            dispatch ({
+                type: "UPDATE_PROGRESS",
+                steps: activeSteps
+            })
+        }
     }
 };
