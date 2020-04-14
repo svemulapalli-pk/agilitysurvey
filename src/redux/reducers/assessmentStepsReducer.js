@@ -7,7 +7,7 @@ const AssessmentSteps = {
             step: 0
         }
     ],
-    currentStep: "Register"
+    currentStep: 0
 }
   
 export function assessmentStepsReducer(state = AssessmentSteps, action) {
@@ -25,8 +25,7 @@ export function assessmentStepsReducer(state = AssessmentSteps, action) {
         case "UPDATE_PROGRESS":
             return {
                 ...state, 
-                steps: action.steps,
-                currentStep: action.currentStep
+                steps: action.steps
             }
         default:
             return state;

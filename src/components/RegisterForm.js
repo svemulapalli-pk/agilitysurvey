@@ -1,16 +1,24 @@
 import React from "react";
 import { Form, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { updateFormStep } from '../redux/actions/assessmentStepsActions';
+import { updateFormStep, updateCurrentStep } from '../redux/actions/assessmentStepsActions';
 
 class RegisterForm extends React.Component {
     constructor(props) {
         super(props);
     }
 
-    handleOnSubmit(e) {
-        e.preventDefault();
-        this.props.dispatch(updateFormStep(this.props.steps, this.props.steps[1]));
+    handleOnSubmit(event) {
+        const form = event.currentTarget,
+            currentStep = this.props.currentStep;
+
+        event.preventDefault();
+        event.stopPropagation();
+
+        if (form.checkValidity() === true) {
+            this.props.dispatch(updateCurrentStep(currentStep + 1))
+            this.props.dispatch(updateFormStep(this.props.steps, this.props.steps[currentStep + 1]));
+        }
     }
 
     render() {
@@ -39,7 +47,8 @@ class RegisterForm extends React.Component {
 
 const mapStateToProps = (state) => {
 	return {
-        steps: state.assessmentStepsReducer.steps
+        steps: state.assessmentStepsReducer.steps,
+        currentStep: state.assessmentStepsReducer.currentStep
 	}
 }
 

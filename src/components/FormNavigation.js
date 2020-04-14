@@ -8,20 +8,27 @@ class FormNavigation extends React.Component {
         super(props);
     }
 
-    onClickPrev = () => {
-        console.log('clicked previous');
+    onClickPrev() {
+        this.props.dispatch(updateCurrentStep(this.props.currentStep - 1));
     }
 
-    onClickNext = () => {
-        this.props.dispatch(updateCurrentStep());
+    onClickNext() {
+        this.props.dispatch(updateCurrentStep(this.props.currentStep + 1));
     }
 
     render() {
+        let isLastStep = (this.props.currentStep === this.props.steps.length - 1);
+
         return (
             <div className="form-navigation__wrapper">
                 <Button variant="success" type="button" onClick={() => {this.onClickPrev()}}>Prev</Button>
                 <span>Section</span>
-                <Button variant="success" type="button" onClick={() => {this.onClickNext()}}>Next</Button>
+                {this.props.validated 
+                    ?   <Button variant="success" type="button" onClick={() => {this.onClickNext()}}>
+                            {isLastStep ? "Finish" : "Next"}
+                        </Button> 
+                    : <Button variant="success" type="button" disabled>Next</Button>
+                }
             </div>
         );
     }

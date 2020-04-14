@@ -2,15 +2,38 @@ import React from "react";
 import { Row, Col, Form, Button } from 'react-bootstrap';
 import QuestionPanel from "./QuestionPanel";
 import FormNavigation from "./FormNavigation";
+import { connect } from 'react-redux';
+import { updateFormStep } from '../redux/actions/assessmentStepsActions';
 
-export default class QPanelList extends React.Component {
+class QPanelList extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            panelAnswers: {},
+            formValidated: false
+        }
+    }
+
+    saveSelection(event) {
+        const form = event.currentTarget,
+            currentStep = this.props.currentStep;
+
+        event.preventDefault();
+        event.stopPropagation();
+
+        if(form.checkValidity() === true) {
+            this.setState({ formValidated: true })
+
+            if (this.props.steps.length > currentStep + 1) {
+                this.props.dispatch(updateFormStep(this.props.steps, this.props.steps[currentStep + 1]));
+            }
+        }
+      
     }
 
     render() {
         return (
-            <Form>
+            <Form onSubmit={() => {this.saveSelection(event)}}>
                 <section className="assessment-form">
                     <section>
                         <h2>Section heading</h2>
@@ -18,7 +41,7 @@ export default class QPanelList extends React.Component {
                     </section>
                     <Row xs={12} className="assessment-form__content">
                         {this.props.questionSet.set.map((query, index) => 
-                            <QuestionPanel set={this.props.questionSet.setName+"-"+index} query={query} key={"query-" + index}/> 
+                            <QuestionPanel set={this.props.questionSet.setName+"-"+index} query={query} key={"query-" + index} /> 
                         )}
                     </Row>
                 </section>
@@ -28,7 +51,7 @@ export default class QPanelList extends React.Component {
                             <Button variant="success" type="submit">Save answers</Button>
                         </Col>
                         <Col xs={12} lg={4}>
-                            <FormNavigation />
+                            <FormNavigation validated={this.state.formValidated} />
                         </Col>
                     </Row>
                 </section>
@@ -36,3 +59,13 @@ export default class QPanelList extends React.Component {
         );
     }
 };
+
+const mapStateToProps = (state) => {
+	return {
+        steps: state.assessmentStepsReducer.steps,
+        currentStep: state.assessmentStepsReducer.currentStep
+	}
+}
+
+export default connect(mapStateToProps)(QPanelList);
+
