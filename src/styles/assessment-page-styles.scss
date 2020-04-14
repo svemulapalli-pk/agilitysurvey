@@ -1,0 +1,42 @@
+.assessment-form {
+    padding: 20px 20px 0;
+    border: 1px solid #accc4a;
+    border-radius: 10px;
+
+    &__content {
+        padding: 0 15px;
+    }
+
+    &__navigation {
+        margin: 15px 0;
+        padding: 20px 0;
+        border: 1px solid #accc4a;
+        border-radius: 10px;
+        &-wrapper {
+            padding: 0 15px;
+        }
+    }
+}
+
+.tablist {
+    position: fixed;
+    width: 150px;
+}
+
+.form-navigation__wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.query__wrapper {
+    border: 1px solid #91b9c3;
+    border-radius: 10px;
+    padding: 15px;
+
+    li {
+        list-style-type: none;
+        margin: 10px 0;
+    }
+}
+  

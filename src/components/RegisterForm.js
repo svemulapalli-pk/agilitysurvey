@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { updateCurrentStep } from '../redux/actions/assessmentStepsActions';
+import { updateFormStep } from '../redux/actions/assessmentStepsActions';
 
 class RegisterForm extends React.Component {
     constructor(props) {
@@ -10,6 +10,7 @@ class RegisterForm extends React.Component {
 
     handleOnSubmit(e) {
         e.preventDefault();
+        this.props.dispatch(updateFormStep(this.props.steps, this.props.steps[1]));
     }
 
     render() {
@@ -30,7 +31,7 @@ class RegisterForm extends React.Component {
                     <Form.Control type="text" required />
                 </Form.Group>
     
-                <Button variant="success" type="submit">Register</Button>
+                <Button variant="success" type="submit">Next</Button>
             </Form>
         );
     }

@@ -12,7 +12,7 @@ const QuestionPanel = (props) => {
 
     return (
         <Form.Group controlId="formBasicRangeCustom" className="query__wrapper">
-             <p>{query.query}</p>
+            <p>{query.query}</p>
             <ul>
                 {queryOpts.map((query, index) => 
                     <li key={props.set + '-' + index}>

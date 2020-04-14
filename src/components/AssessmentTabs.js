@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import data from '../query-data.json';
 import RegisterForm from "./RegisterForm";
 import QPanelList from "./QPanelList";
-import {initializeAssessmentForm} from '../redux/actions/assessmentStepsActions';
+import { initializeAssessmentForm, updateCurrentStep } from '../redux/actions/assessmentStepsActions';
 
 class AssessmentTabs extends React.Component {
     constructor(props) {
@@ -13,40 +13,44 @@ class AssessmentTabs extends React.Component {
     }
 
     componentDidMount() {
-        let assessmentSteps = data.questions.map((set, index) => {
-            return {
-                name: set.setName,
-                step: (index + 1),
+        let assessmentSteps = [...this.props.steps];
+        data.questions.forEach((set, index) => {
+            assessmentSteps.push({
+                active: false,
                 enable: false,
-                active: false
-            }
+                name: set.setName,
+                step: (index + 1)
+            })
         })
+        
         this.props.dispatch(initializeAssessmentForm(assessmentSteps));
     }
 
     render() {
+        let selectedStep = this.props.currentStep;
+
         return (
-            <Tab.Container id="left-tabs-example" defaultActiveKey="Register">
-                <Row xs={12}>
-                    <Col xs={5} lg={3}>
-                        <Nav variant="pills" className="flex-column">
-                            <Nav.Item>
-                                <Nav.Link eventKey="Register">Register</Nav.Link>
-                            </Nav.Item>
+            <Tab.Container id="left-tabs-example" activeKey={selectedStep}>
+                <Row xs={12} className="questions-panel">
+                    <Col xs={5} lg={3} className="questions-panel--tabs">
+                        <Nav variant="pills" className="flex-column tablist">
                             {this.props.steps.map((set, index) =>  
                                 <Nav.Item key={"tab-" + index}>
-                                    <Nav.Link eventKey={"set-" + index} disabled={set.enable ? "true" : "false"}>{set.name}</Nav.Link>
+                                    {set.enable 
+                                        ? <Nav.Link eventKey={set.name} onClick={() => {this.props.dispatch(updateCurrentStep(set.name))}}>{set.name}</Nav.Link>
+                                        : <Nav.Link eventKey={set.name} disabled>{set.name}</Nav.Link>
+                                    }
                                 </Nav.Item>
                             )}
                         </Nav>
                     </Col>
-                    <Col xs={7} lg={9}>
+                    <Col xs={7} lg={9} className="questions-panel--tabs-content">
                         <Tab.Content>
                             <Tab.Pane eventKey="Register">
                                 <RegisterForm />
                             </Tab.Pane>
                             {data.questions.map((set, index) =>  
-                                <Tab.Pane key={"tab-content-" + index} eventKey={"set-" + index} >
+                                <Tab.Pane key={"tab-content-" + index} eventKey={set.setName} >
                                     <QPanelList questionSet={set} />
                                 </Tab.Pane>
                             )}
@@ -60,7 +64,8 @@ class AssessmentTabs extends React.Component {
 
 function mapStateToProps(state) {
 	return {
-        steps: state.assessmentStepsReducer.steps
+        steps: state.assessmentStepsReducer.steps,
+        currentStep: state.assessmentStepsReducer.currentStep
 	}
 }
 
